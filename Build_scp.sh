@@ -11,5 +11,5 @@ to_print=""
 while read line; do 
 	new_name=$(echo ${line} | cut -f1 -d',')
 	old_name=$(echo ${line} | cut -f9 -d',')
-	echo "scp ${old_name} ${destination}/data/${new_name}.single.fastq.gz"
+	echo "scp ${old_name} ${destination}/raw_reads/${new_name}.single.fastq.${old_name##*.}"
 done < <(Check_SampleSheet.py ${sample_sheet} | tail -n+2)
